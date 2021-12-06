@@ -12,7 +12,7 @@ boolean  in_clan_stash(item it) {
 void who_took(item it) {
 	string log = visit_url("clan_log.php");
 	// 11/30/21, 07:01PM: CheeseyPickle (#3048851) took 1 picky tweezers.
-	matcher item_matcher = create_matcher(">(\\S+ .#\\d+.)</a> (took 1 "+it.name+")", log);
+	matcher item_matcher = create_matcher(">([^>]+ .#\\d+.)</a> (took 1 "+it.name+")", log);
 	if (item_matcher.find()) {
 		print("Player " + item_matcher.group(1) + " has the item: " + it.name);
 	} else {
